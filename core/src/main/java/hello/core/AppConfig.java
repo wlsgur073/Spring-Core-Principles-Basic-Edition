@@ -17,18 +17,35 @@ public class AppConfig {
     * AppConfig 는 생성한 객체 인스턴스의 참조(레퍼런스)를 생성자를 통해서 주입 해준다.
     * */
 
+    /*
+    * call AppConfig.memberService
+    * call AppConfig.memberRepository
+    * call AppConfig.orderService
+    * call AppConfig.memberRepository
+    * call AppConfig.memberRepository
+    *
+    * 스프링을 실행하면 위처럼 출력될 것 같지만 실제로는 각 1번씩만 출력된다.
+    * call AppConfig.memberService
+    * call AppConfig.memberRepository
+    * call AppConfig.orderService
+    * */
+
+
     @Bean
     public MemberService memberService() {
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemoryMemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
