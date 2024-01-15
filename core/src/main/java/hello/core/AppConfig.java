@@ -2,11 +2,13 @@ package hello.core;
 
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
+import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,6 +32,10 @@ public class AppConfig {
     * call AppConfig.orderService
     * */
 
+//    나중에 배우겠지만, Autowired를 사용하면 스프링 컨테이너에 등록된 인스턴스를 넣어주기에
+//    @Configuration 이 선언되지 않아도 같은 memberRepository를 호출해서 넣어준다.
+//    @Autowired
+//    MemberRepository memberRepository;
 
     @Bean
     public MemberService memberService() {
