@@ -13,7 +13,7 @@ import org.springframework.context.annotation.FilterType;
         // 패키지 위치는 보통 패키지를 지정하지 않고 최상단에 두는 편이다.
         // @SpringBootApplication 을 프로젝트 시작 루트 위치에 두는 것이 관례이다.
         // 이 어노테이션에 컴포넌트 스캔이 들어있기 때문이다. 따라서 ComponentScan를 굳이 쓸 필요 없다.
-        , basePackages = "hello.core.member"
+//        , basePackages = "hello.core.member"
 )
 public class AutoAppConfig {
 

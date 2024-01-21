@@ -18,6 +18,21 @@ public class OrderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
+    /*
+    * 필드 주입 - 겉보기엔 코드도 간졀하기 정말 괜찮아 보이는 의존성 주입 방식이다.
+    * 그러나 이 방법은 외부에서 변경이 불가능해서 테스트하기 힘들다는 치명적인 단점이 존재한다.
+    * */
+//    @Autowired private MemberRepository memberRepository;
+//    @Autowired private DiscountPolicy discountPolicy;
+//
+//    public void setMemberRepository(MemberRepository memberRepository) {
+//        this.memberRepository = memberRepository;
+//    }
+//
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+//        this.discountPolicy = discountPolicy;
+//    }
+
     // final 에는 값이 할당 되어야만 사용 가능하다.
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
