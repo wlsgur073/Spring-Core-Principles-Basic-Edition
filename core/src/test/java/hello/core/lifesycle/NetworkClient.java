@@ -1,9 +1,9 @@
 package hello.core.lifesycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient {
 
     /*
     * InitializingBean, DisposableBean 는 스프링 전용 인터페이스이기에
@@ -35,17 +35,30 @@ public class NetworkClient implements InitializingBean, DisposableBean {
     }
 
 
-    // 의존관계 주입이 끝나면 호출하는 메서드
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("NetworkClient.afterPropertiesSet");
+//    의존관계 주입이 끝나면 호출하는 메서드 (InitializingBean)
+//    @Override
+//    public void afterPropertiesSet() throws Exception {
+//        System.out.println("NetworkClient.afterPropertiesSet");
+//        connect();
+//        call("초기화 연결 메세지");
+//    }
+//    인터페이스 DisposableBean
+//    @Override
+//    public void destroy() throws Exception {
+//        System.out.println("NetworkClient.destroy");
+//        disconnect();
+//    }
+
+    @PostConstruct
+    public void init() throws Exception {
+        System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메세지");
     }
 
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("NetworkClient.destroy");
+    @PreDestroy
+    public void close() throws Exception {
+        System.out.println("NetworkClient.close");
         disconnect();
     }
 }
